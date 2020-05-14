@@ -15,23 +15,27 @@
               :items="videoCategories"
               class="d-flex align-center"
               solo
+              transition="scroll-y-transition"
             ></v-select>
           </v-card-text>
         </v-toolbar-items>
       </v-toolbar>
-      <div class="my-8">
+      <div>
         <v-container>
-          <v-row>
-            <v-col v-for="video in videosByCategory" :key="video.link" cols="12">
-              <v-card
-                raised
-              >
-                <v-card-title>{{video.title}}</v-card-title>
-                <youtube :video-id="video.link" player-width="100%" class="youtube-container"></youtube>
-                <v-card-text>{{video.description}}</v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
+          <div v-for="video in videosByCategory" :key="video.link">
+            <v-row class="my-8">
+              <v-layout>
+                <youtube :video-id="video.link" player-width="100%" player-height="100%" class="youtube-container col-5"></youtube>
+                <v-layout column class="col-6 offset-1 text-left" justify-center>
+                  <v-card-title>{{video.title}}</v-card-title>
+                  <v-card-text>{{video.description}}</v-card-text>
+                </v-layout>
+              </v-layout>
+            </v-row>
+            <v-row>
+              <v-divider></v-divider>
+            </v-row>
+          </div>
         </v-container>
       </div>
     </v-flex>
@@ -76,12 +80,12 @@ export default {
 
 <style>
   .youtube-container {
+    width: 100%;
     height: 0;
     margin: auto;
     z-index: 1;
     position: relative;
-    padding-top: 25px;
-    padding-bottom: 56.25%;
+    padding-bottom: 23.4375%;
     display: block;
     overflow: hidden;
   }

@@ -67,11 +67,6 @@ export default {
           to: '/portfolio'
         },
         {
-          icon: 'mdi-video-image',
-          title: 'Portfolio2',
-          to: '/videos'
-        },
-        {
           icon: 'mdi-frequently-asked-questions',
           title: 'Bio',
           to: '/bio'
