@@ -40,7 +40,7 @@
               </v-layout>
             </v-row>
             <v-row>
-              <v-divider></v-divider>
+              <v-divider/>
             </v-row>
           </div>
         </v-container>
