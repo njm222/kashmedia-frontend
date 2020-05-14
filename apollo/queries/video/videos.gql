@@ -1,0 +1,12 @@
+query Videos {
+  videos {
+    id
+    title
+    description
+    link
+    video_categories {
+      id
+      name
+    }
+  }
+}

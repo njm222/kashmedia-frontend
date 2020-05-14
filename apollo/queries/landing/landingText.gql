@@ -1,0 +1,6 @@
+query landingText {
+  landing {
+    title
+    subtitle
+  }
+}
