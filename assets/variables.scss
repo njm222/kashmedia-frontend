@@ -2,3 +2,89 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+@import '~vuetify/src/styles/styles.sass';
+
+.theme--dark.v-application {
+  font-family: 'Poiret+One', monospace;
+}
+
+.theme--dark.v-app-bar.v-toolbar.v-sheet {
+  background: none;
+}
+
+.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot:hover fieldset {
+  border-color: #CC9700;
+  border-width: 1.5px;
+}
+
+.v-app-bar .v-toolbar__title {
+  letter-spacing: 1em;
+}
+
+.v-card__title,
+.v-toolbar__title {
+  color: #DD9700;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+}
+.v-card__text {
+  color: #00CBE4;
+}
+
+.theme--dark.v-navigation-drawer {
+  background-color: #1F1F1F;
+}
+
+.v-navigation-drawer .v-list {
+  padding: 0;
+}
+
+.v-navigation-drawer .v-list-item__action,
+.v-navigation-drawer .v-list-item__content{
+  padding: 6.4vh 0;
+}
+
+.v-navigation-drawer .v-list-item.v-list-item--link .v-list-item__title {
+  color: #00CBE4;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  letter-spacing: 0.2em;
+}
+
+.theme--dark.v-icon {
+  color: #DD9700;
+}
+
+.theme--dark.v-btn--outlined:hover {
+  border-color: #DD9700;
+  border-width: 1.5px;
+}
+
+.v-divider {
+  border-color: #DD9700 !important;
+}
+
+.theme--dark.v-select .v-select__selection--comma {
+  font-family: 'Poiret+One', sans-serif;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+.v-select-list {
+  padding: 0;
+}
+
+.v-select-list .v-list-item {
+  border-bottom: 1px solid #00CBE4;
+}
+
+.v-select-list .v-list-item:last-child {
+  border-bottom: none;
+}
+
+.v-select-list .v-list-item__title {
+  font-family: 'Poiret+One', monospace;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}

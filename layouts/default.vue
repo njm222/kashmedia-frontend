@@ -72,7 +72,7 @@ export default {
           to: '/bio'
         },
         {
-          icon: 'mdi-frequently-asked-questions',
+          icon: 'mdi-message',
           title: 'Contact',
           to: '/contact'
         }
@@ -84,3 +84,7 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+  @import '~vuetify/src/styles/styles.sass'
+</style>

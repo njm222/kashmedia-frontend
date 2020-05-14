@@ -1,9 +1,10 @@
 query Videos {
-  videos {
+  videos(sort: "order") {
     id
     title
     description
     link
+    order
     video_categories {
       id
       name

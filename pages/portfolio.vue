@@ -1,24 +1,31 @@
 <template>
   <v-layout>
     <v-flex class="text-center">
-      <v-toolbar height="80" color="#121212">
-        <v-toolbar-title>
-          Portfolio
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-          <v-card-text>
-            <v-select
-              item-text="name"
-              v-model="defaultCategory"
-              :label="defaultCategory.name"
-              :items="videoCategories"
-              class="d-flex align-center"
-              solo
-              transition="scroll-y-transition"
-            ></v-select>
-          </v-card-text>
-        </v-toolbar-items>
+      <v-toolbar extended color="#121212">
+        <v-container class="toolbar-container">
+          <v-layout
+            justify-center
+            align-center
+          >
+            <v-toolbar-title>
+              Portfolio
+            </v-toolbar-title>
+            <v-spacer/>
+            <v-toolbar-items>
+              <v-card-text>
+                <v-select
+                  item-text="name"
+                  v-model="defaultCategory"
+                  :label="defaultCategory.name"
+                  :items="videoCategories"
+                  class="d-flex align-center"
+                  outlined
+                  transition="scroll-y-transition"
+                ></v-select>
+              </v-card-text>
+            </v-toolbar-items>
+          </v-layout>
+        </v-container>
       </v-toolbar>
       <div>
         <v-container>
@@ -53,7 +60,7 @@ export default {
       model: 'tab-portfolio-videos',
       videos: [],
       videoCategories: [],
-      defaultCategory: 'documentary'
+      defaultCategory: 'all'
     }
   },
   apollo: {
@@ -97,5 +104,11 @@ export default {
     height: 100%;
     z-index: 5;
     position: absolute;
+  }
+  .toolbar-container {
+    height: 100%;
+  }
+  .v-text-field .v-input__control {
+    height: 3.5rem;
   }
 </style>

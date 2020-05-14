@@ -1,6 +1,6 @@
 query videosCategories {
   videoCategories {
-    id
     name
+    id
   }
 }
