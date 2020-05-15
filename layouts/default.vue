@@ -2,9 +2,9 @@
   <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
+      mini-variant
       app
     >
       <v-list>
@@ -14,19 +14,17 @@
           :to="item.to"
           router
           exact
+          :ripple="false"
         >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
       :clipped-left="clipped"
-      :collapse-on-scroll=true
+      :collapse-on-scroll="true"
       fixed
       app
     >
@@ -38,9 +36,6 @@
     <v-content>
       <nuxt />
     </v-content>
-    <v-footer>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
   </v-app>
 </template>
 
@@ -55,11 +50,6 @@ export default {
           icon: 'mdi-home',
           title: 'Home',
           to: '/'
-        },
-        {
-          icon: 'mdi-apps',
-          title: 'Sample',
-          to: '/home'
         },
         {
           icon: 'mdi-video',
@@ -77,7 +67,6 @@ export default {
           to: '/contact'
         }
       ],
-      miniVariant: false,
       right: true,
       title: 'KASHMEDIA'
     }

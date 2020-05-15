@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-flex class="text-center">
-      <v-toolbar extended color="#121212">
+      <v-toolbar prominent>
         <v-container class="toolbar-container">
           <v-layout
             justify-center
@@ -12,23 +12,30 @@
             </v-toolbar-title>
             <v-spacer/>
             <v-toolbar-items>
-              <v-card-text>
-                <v-select
-                  item-text="name"
-                  v-model="defaultCategory"
-                  :label="defaultCategory.name"
-                  :items="videoCategories"
-                  class="d-flex align-center"
-                  outlined
-                  transition="scroll-y-transition"
-                ></v-select>
-              </v-card-text>
+              <v-select
+                item-text="name"
+                v-model="defaultCategory"
+                :label="defaultCategory.name"
+                :items="videoCategories"
+                class="d-flex align-center"
+                outlined
+                transition="scroll-y-transition"
+              ></v-select>
             </v-toolbar-items>
           </v-layout>
         </v-container>
       </v-toolbar>
       <div>
         <v-container>
+          <v-layout
+            justify-center
+            align-center
+          >
+            <div class="pre-quote">
+              Here's a showcase of my work filler text and some more text for two lines of my work filler text.
+            </div>
+          </v-layout>
+          <v-divider/>
           <div v-for="video in videosByCategory" :key="video.link">
             <v-row class="my-8">
               <v-layout>
@@ -105,10 +112,13 @@ export default {
     z-index: 5;
     position: absolute;
   }
-  .toolbar-container {
-    height: 100%;
-  }
   .v-text-field .v-input__control {
     height: 3.5rem;
+  }
+  .v-select {
+    min-width: 20rem;
+  }
+  .v-select.v-text-field input {
+    width: 0;
   }
 </style>
