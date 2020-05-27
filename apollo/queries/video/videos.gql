@@ -2,6 +2,7 @@ query Videos {
   videos(sort: "order") {
     id
     title
+    subtitle
     description
     link
     order
