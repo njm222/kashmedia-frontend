@@ -1,0 +1,7 @@
+query contactText {
+  contact {
+    title
+    subtitle
+    formTitle
+  }
+}

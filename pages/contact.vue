@@ -7,10 +7,10 @@
             justify-center
             align-center
           >
-            <v-toolbar-title>Contact</v-toolbar-title>
-            <v-spacer/>
+            <v-toolbar-title>{{ contactTitle }}</v-toolbar-title>
+            <v-spacer />
             <v-toolbar-items class="align-center">
-              <v-row>
+              <div>
                 <span>
                   <a>
                     <v-icon x-large class="mx-4">mdi-youtube</v-icon>
@@ -19,7 +19,7 @@
                     <v-icon x-large class="mx-4">mdi-instagram</v-icon>
                   </a>
                 </span>
-              </v-row>
+              </div>
             </v-toolbar-items>
           </v-layout>
         </v-container>
@@ -31,51 +31,54 @@
             align-center
           >
             <div class="pre-quote">
-              Here's a showcase of my work filler text and some more text for two lines of my work filler text.
+              {{ contactSubtitle }}
             </div>
           </v-layout>
-          <v-divider/>
-          <v-card class="contact-container">
-            <v-card-title
-              class="justify-center"
-            >
-              Drop me a message
-            </v-card-title>
+          <v-divider />
+          <v-card-title
+            class="contact justify-center"
+          >
+            {{ contactFormTitle }}
+          </v-card-title>
+          <v-card class="contact-container" outlined raised>
             <v-form
               v-model="valid"
             >
               <v-container>
-                <v-row>
+                <v-spacer />
+                <div>
                   <v-col>
                     <v-text-field
                       v-model="firstname"
                       :rules="nameRules"
-                      :counter="10"
+                      :counter="20"
                       label="First name"
                       required
-                    ></v-text-field>
+                    />
                   </v-col>
                   <v-col>
                     <v-text-field
                       v-model="lastname"
                       :rules="nameRules"
-                      :counter="10"
+                      :counter="20"
                       label="Last name"
                       required
-                    ></v-text-field>
+                    />
                   </v-col>
-                </v-row>
-                <v-row>
+                </div>
+                <v-spacer />
+                <div>
                   <v-col>
                     <v-text-field
                       v-model="email"
                       :rules="emailRules"
                       label="E-mail"
                       required
-                    ></v-text-field>
+                    />
                   </v-col>
-                </v-row>
-                <v-row>
+                </div>
+                <v-spacer />
+                <div>
                   <v-col>
                     <v-text-field
                       v-model="subject"
@@ -83,28 +86,31 @@
                       :counter="30"
                       label="Subject"
                       required
-                    ></v-text-field>
+                    />
                   </v-col>
-                </v-row>
-                <v-row>
+                </div>
+                <v-spacer />
+                <div>
                   <v-col>
-                    <v-text-area
+                    <v-textarea
                       v-model="message"
                       :rules="messageRules"
-                      :counter="500"
+                      :counter="750"
                       label="Message"
                       required
-                    ></v-text-area>
+                      auto-grow
+                    />
                   </v-col>
-                </v-row>
-                <v-row>
+                </div>
+                <v-spacer />
+                <div>
                   <v-col>
-                    <v-btn :disabled="!valid" class="mr-4" @click="submit">submit</v-btn>
+                    <v-btn :disabled="!valid" outlined v-bind="size" @click="submit">
+                      send
+                    </v-btn>
                   </v-col>
-                  <v-col>
-                    <v-btn @click="clear">clear</v-btn>
-                  </v-col>
-                </v-row>
+                </div>
+                <v-spacer />
               </v-container>
             </v-form>
           </v-card>
@@ -115,32 +121,55 @@
 </template>
 
 <script>
+import ContactQuery from '~/apollo/queries/contact/contactText'
 
 export default {
-  data() {
+  data () {
     return {
+      contact: [],
       valid: true,
       firstname: '',
       lastname: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => v.length <= 10 || 'Name must be less than 10 characters',
+        v => v.length <= 20 || 'Name must be less than 20 characters'
       ],
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
       ],
       subject: '',
       subjectRules: [
         v => !!v || 'Subject is required',
-        v => v.length <= 30 || 'Subject must be less than 30 characters',
+        v => v.length <= 30 || 'Subject must be less than 30 characters'
       ],
       message: '',
       messageRules: [
         v => !!v || 'Message is required',
-        v => v.length <= 500 || 'Message must be less than 500 characters',
+        v => v.length <= 750 || 'Message must be less than 750 characters'
       ]
+    }
+  },
+  apollo: {
+    contact: {
+      prefetch: true,
+      query: ContactQuery
+    }
+  },
+  computed: {
+    size () {
+      const size = { sm: 'small', lg: 'large', xl: 'x-large' }[this.$vuetify.breakpoint.name]
+      return size ? { [size]: true } : {}
+    },
+    contactTitle () {
+      return this.contact.title
+    },
+    contactSubtitle () {
+      return this.contact.subtitle
+    },
+    contactFormTitle () {
+      return this.contact.formTitle
     }
   },
   methods: {
@@ -164,7 +193,21 @@ export default {
 </script>
 
 <style>
+  .contact.v-card__title {
+    margin: 2rem 2em;
+    padding: 0;
+  }
   .contact-container {
-    margin: 3rem 0;
+    margin: 0 5%;
+  }
+  .contact-container form {
+    height: 100%;
+  }
+  .contact-container form .container {
+    height: inherit;
+    width: 90%;
+    margin: 0 5%;
+    display: flex;
+    flex-direction: column;
   }
 </style>
