@@ -1,23 +1,28 @@
 <template>
   <v-layout
-  fill-height>
+    class="landing-content-container"
+  >
     <v-layout
       column
       justify-end
       align-start
-      class="mb-5 ml-5"
     >
-      <h1 class="display-4 font-weight-bold">{{landingTitle}}</h1>
-      <h2 class="display-1 font-weight-thin">{{landingSubtitle}}</h2>
+      <h1 class="landing-title font-weight-bold">
+        {{ landingTitle }}
+      </h1>
+      <h2 class="landing-subtitle font-weight-thin">
+        {{ landingSubtitle }}
+      </h2>
     </v-layout>
     <v-layout
-    justify-center
-    align-end
-    class="mb-5"
+      justify-center
+      align-end
     >
       <v-btn
         to="/portfolio"
-        outlined>
+        outlined
+        v-bind="size"
+      >
         Portfolio
       </v-btn>
     </v-layout>
@@ -25,16 +30,10 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
 import LandingQuery from '~/apollo/queries/landing/landingText'
 
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  },
-  data() {
+  data () {
     return {
       landing: []
     }
@@ -46,13 +45,32 @@ export default {
     }
   },
   computed: {
-    landingTitle: function () {
-      return this.landing.title
-
+    size () {
+      const size = { sm: 'small', lg: 'large', xl: 'x-large' }[this.$vuetify.breakpoint.name]
+      return size ? { [size]: true } : {}
     },
-    landingSubtitle: function () {
+    landingTitle () {
+      return this.landing.title
+    },
+    landingSubtitle () {
       return this.landing.subtitle
     }
   }
 }
 </script>
+
+<style>
+  .landing-content-container {
+    height: 100%;
+    padding: 0 5% 2%;
+  }
+  .landing-title {
+    font-size: 6vw;
+    line-height: 1em;
+  }
+  .landing-subtitle {
+    font-size: 4vw;
+    line-height: 1em;
+    margin-top: .5em;
+  }
+</style>

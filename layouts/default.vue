@@ -25,7 +25,6 @@
     <v-app-bar
       :clipped-left="clipped"
       :collapse-on-scroll="true"
-      fixed
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -67,8 +66,18 @@ export default {
           to: '/contact'
         }
       ],
+      miniVariant: false,
       right: true,
       title: 'KASHMEDIA'
+    }
+  },
+  computed: {
+    titleComputed () {
+      const chars = this.title.split('')
+      for (let i = 0; i in chars; i++) {
+        chars[i] = `<span>${chars[i]}</span>`
+      }
+      return chars.join('')
     }
   }
 }
