@@ -82,7 +82,7 @@ module.exports = {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:1337/graphql'
+        httpEndpoint: 'https://kashmedia.herokuapp.com/graphql'
       }
     }
   },
