@@ -3,5 +3,8 @@ query bioText {
     title
     subtitle
     bioContent
+    bioImage {
+      url
+    }
   }
 }

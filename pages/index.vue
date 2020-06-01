@@ -7,10 +7,10 @@
       justify-end
       align-start
     >
-      <h1 class="landing-title font-weight-bold">
+      <h1 class="landing-title">
         {{ landingTitle }}
       </h1>
-      <h2 class="landing-subtitle font-weight-thin">
+      <h2 class="landing-subtitle">
         {{ landingSubtitle }}
       </h2>
     </v-layout>
@@ -65,12 +65,17 @@ export default {
     padding: 0 5% 2%;
   }
   .landing-title {
-    font-size: 6vw;
+    font-size: 7.5vw;
     line-height: 1em;
+    font-family: 'Poiret One', cursive;
+    font-weight: 400;
   }
   .landing-subtitle {
-    font-size: 4vw;
+    font-size: 3.5vw;
+    letter-spacing: 0.2em;
     line-height: 1em;
     margin-top: .5em;
+    font-family: 'Poiret One', cursive;
+    font-weight: 400;
   }
 </style>

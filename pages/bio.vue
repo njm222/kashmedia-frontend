@@ -36,8 +36,8 @@
             </v-card-text>
             <v-card-text>
               <v-img
-                src="https://picsum.photos/400/710?random"
-                lazy-src="https://picsum.photos/400/710?random"
+                :src='api_url + bioImage'
+                :lazy-src='api_url + bioImage'
                 aspect-ratio="1"
                 max-width="400"
               >
@@ -65,7 +65,8 @@ import BioQuery from '~/apollo/queries/bio/bioText'
 export default {
   data () {
     return {
-      bio: []
+      bio: [],
+      api_url: 'https://kashmedia.herokuapp.com'
     }
   },
   apollo: {
@@ -87,6 +88,9 @@ export default {
     },
     bioContent () {
       return this.bio.bioContent
+    },
+    bioImage () {
+      return this.bio.bioImage.url
     }
   }
 }
