@@ -1,8 +1,9 @@
-# frontend
+# kashmedia (frontend)
 
-> Frontend for kashmedia
+The frontend for a portfolio website [kashmediafilms](https://kashmediafilms.com/)
 
-## Build Setup
+
+## Getting Started for local use
 
 ```bash
 # install dependencies
@@ -20,3 +21,37 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+
+## Prerequisites
+
+Requirements are Node.js and yarn
+
+
+## Deployment
+
+Hosted @ (https://kashmediafilms.com/)
+
+
+## Built With
+
+* [node.js](https://nodejs.org) 
+
+* [yarn](https://github.com/yarnpkg/yarn)
+
+* [vue.js](https://vuejs.org)
+
+* [nuxt.js](https://nuxtjs.org)
+
+* [vuetify.js](https://vuetifyjs.com)
+
+* [apollo](https://www.apollographql.com)
+
+* [graphql](https://graphql.org)
+
+* [firebase-hosting](https://firebase.google.com/products/hosting)
+
+
+### Author
+
+* **Nathan Menezes**
