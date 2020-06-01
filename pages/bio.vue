@@ -36,8 +36,8 @@
             </v-card-text>
             <v-card-text>
               <v-img
-                :src='api_url + bioImage'
-                :lazy-src='api_url + bioImage'
+                :src='bioImage'
+                :lazy-src='bioImage'
                 aspect-ratio="1"
                 max-width="400"
               >
@@ -66,7 +66,6 @@ export default {
   data () {
     return {
       bio: [],
-      api_url: 'https://kashmedia.herokuapp.com'
     }
   },
   apollo: {
