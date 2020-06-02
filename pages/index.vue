@@ -119,7 +119,7 @@ export default {
     font-size: 3.5vw;
     letter-spacing: 0.2em;
     line-height: 1em;
-    margin-top: .5em;
+    margin-top: 0.2em;
     font-family: 'Poiret One', cursive;
     font-weight: 400;
   }
