@@ -29,7 +29,13 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
-      <v-toolbar-title v-text="title" />
+      <a href="/" class="banner-title">
+        <v-toolbar-title>
+          <span v-for="item in titleComputed">
+            {{ item }}
+          </span>
+        </v-toolbar-title>
+      </a>
       <v-spacer />
     </v-app-bar>
     <v-content>
@@ -74,10 +80,7 @@ export default {
   computed: {
     titleComputed () {
       const chars = this.title.split('')
-      for (let i = 0; i in chars; i++) {
-        chars[i] = `<span>${chars[i]}</span>`
-      }
-      return chars.join('')
+      return chars
     }
   }
 }

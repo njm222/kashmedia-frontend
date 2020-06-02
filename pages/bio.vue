@@ -36,8 +36,8 @@
             </v-card-text>
             <v-card-text>
               <v-img
-                :src='bioImage'
-                :lazy-src='bioImage'
+                :src="bioImage"
+                :lazy-src="bioImage"
                 aspect-ratio="1"
                 max-width="400"
               >
@@ -65,7 +65,7 @@ import BioQuery from '~/apollo/queries/bio/bioText'
 export default {
   data () {
     return {
-      bio: [],
+      bio: []
     }
   },
   apollo: {

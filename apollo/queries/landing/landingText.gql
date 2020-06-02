@@ -2,5 +2,6 @@ query landingText {
   landing {
     title
     subtitle
+    videoID
   }
 }

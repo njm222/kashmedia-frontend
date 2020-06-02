@@ -2,6 +2,28 @@
   <v-layout
     class="landing-content-container"
   >
+    <youtube
+      v-show="!loading"
+      class="background-video"
+      player-width="100%"
+      player-height="100%"
+      :video-id="videoId"
+      :player-vars="{ playlist: videoId, autoplay: 1, controls: 0, loop: 1, modestbranding: 1, rel: 0 }"
+      @ready="ready"
+    />
+    <div v-show="loading">
+      <v-layout
+        class="loading-container"
+        justify-center
+        align-center
+      >
+        <v-progress-circular
+          indeterminate
+          color="primary"
+        />
+      </v-layout>
+    </div>
+
     <v-layout
       column
       justify-end
@@ -35,7 +57,8 @@ import LandingQuery from '~/apollo/queries/landing/landingText'
 export default {
   data () {
     return {
-      landing: []
+      landing: [],
+      loading: true
     }
   },
   apollo: {
@@ -54,15 +77,37 @@ export default {
     },
     landingSubtitle () {
       return this.landing.subtitle
+    },
+    videoId () {
+      return this.landing.videoID
+    }
+  },
+  methods: {
+    ready () {
+      this.loading = false
     }
   }
 }
 </script>
 
 <style>
+  .background-video {
+  }
+  .loading-container,
+  .background-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
   .landing-content-container {
     height: 100%;
-    padding: 0 5% 2%;
+    padding: 0 5% 1%;
+  }
+  .landing-content-container .layout {
+    z-index: 1;
   }
   .landing-title {
     font-size: 7.5vw;
