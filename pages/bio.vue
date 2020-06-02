@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <v-layout v-if="Object.keys(bio).length > 1">
     <v-flex class="text-center">
       <v-toolbar prominent>
         <v-container class="toolbar-container">
@@ -28,7 +28,7 @@
             </div>
           </v-layout>
           <v-divider />
-          <v-layout class="bio-container text-left" align-center>
+          <v-layout v-if="Object.keys(bio).length > 4" class="bio-container text-left" align-center>
             <v-card-text>
               <p style="white-space: pre-line;">
                 {{ bioContent }}
@@ -36,8 +36,8 @@
             </v-card-text>
             <v-card-text>
               <v-img
-                :src="bioImage"
-                :lazy-src="bioImage"
+                :src="bioImage.url"
+                :lazy-src="bioImage.url"
                 aspect-ratio="1"
                 max-width="400"
               >
@@ -65,7 +65,7 @@ import BioQuery from '~/apollo/queries/bio/bioText'
 export default {
   data () {
     return {
-      bio: []
+      bio: {}
     }
   },
   apollo: {
@@ -89,7 +89,9 @@ export default {
       return this.bio.bioContent
     },
     bioImage () {
-      return this.bio.bioImage.url
+      console.log(this.bio)
+      console.log(this.bio.bioImage)
+      return this.bio.bioImage
     }
   }
 }
