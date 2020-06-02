@@ -116,10 +116,10 @@ export default {
     font-weight: 400;
   }
   .landing-subtitle {
-    font-size: 3.5vw;
+    font-size: 3vw;
     letter-spacing: 0.2em;
     line-height: 1em;
-    margin-top: 0.2em;
+    margin-top: 0.3rem;
     font-family: 'Poiret One', cursive;
     font-weight: 400;
   }
