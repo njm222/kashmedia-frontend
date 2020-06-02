@@ -89,8 +89,6 @@ export default {
       return this.bio.bioContent
     },
     bioImage () {
-      console.log(this.bio)
-      console.log(this.bio.bioImage)
       return this.bio.bioImage
     }
   }

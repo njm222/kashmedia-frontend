@@ -23,7 +23,6 @@
         />
       </v-layout>
     </div>
-
     <v-layout
       column
       justify-end
