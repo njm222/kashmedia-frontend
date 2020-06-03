@@ -46,7 +46,7 @@
             >
               <v-container>
                 <v-spacer />
-                <div>
+                <v-row>
                   <v-col>
                     <v-text-field
                       v-model="firstname"
@@ -65,9 +65,9 @@
                       required
                     />
                   </v-col>
-                </div>
+                </v-row>
                 <v-spacer />
-                <div>
+                <v-row>
                   <v-col>
                     <v-text-field
                       v-model="email"
@@ -76,9 +76,6 @@
                       required
                     />
                   </v-col>
-                </div>
-                <v-spacer />
-                <div>
                   <v-col>
                     <v-text-field
                       v-model="subject"
@@ -88,9 +85,9 @@
                       required
                     />
                   </v-col>
-                </div>
+                </v-row>
                 <v-spacer />
-                <div>
+                <v-row>
                   <v-col>
                     <v-textarea
                       v-model="message"
@@ -101,15 +98,15 @@
                       auto-grow
                     />
                   </v-col>
-                </div>
+                </v-row>
                 <v-spacer />
-                <div>
+                <v-row>
                   <v-col>
                     <v-btn :disabled="!valid" outlined v-bind="size" @click="submit">
                       send
                     </v-btn>
                   </v-col>
-                </div>
+                </v-row>
                 <v-spacer />
               </v-container>
             </v-form>

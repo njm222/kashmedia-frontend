@@ -30,11 +30,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
       <a href="/" class="banner-title">
-        <v-toolbar-title>
-          <span v-for="item in titleComputed">
-            {{ item }}
-          </span>
-        </v-toolbar-title>
+        <v-toolbar-title v-text="title" />
       </a>
       <v-spacer />
     </v-app-bar>
@@ -75,12 +71,6 @@ export default {
       miniVariant: false,
       right: true,
       title: 'KASHMEDIA'
-    }
-  },
-  computed: {
-    titleComputed () {
-      const chars = this.title.split('')
-      return chars
     }
   }
 }
