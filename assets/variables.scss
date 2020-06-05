@@ -17,11 +17,6 @@
   background: #121212;
 }
 
-.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot:hover fieldset {
-  border-color: #CC9700;
-  border-width: 1.5px;
-}
-
 .v-application--is-ltr .v-toolbar.v-toolbar--collapsed {
   opacity: 0.8;
   max-width: 74px;
@@ -84,10 +79,6 @@ main {
   word-break: break-word;
 }
 
-.v-toolbar:hover .v-toolbar__title {
-  color: #00CBE4;
-}
-
 .item-container:hover .v-card__title {
    color: #00CBE4;
  }
@@ -126,8 +117,12 @@ main {
   color: #00CBE4;
 }
 
-.theme--dark.v-btn--outlined:hover {
+.theme--dark.v-btn--outlined {
   border-color: #DD9700;
+}
+
+.theme--dark.v-btn--outlined:hover {
+  border-color: #00CBE4;
   border-width: 1.5px;
 }
 
@@ -159,6 +154,11 @@ main {
 .theme--dark.v-input textarea,
 .theme--dark.v-input {
   color: #00CBE4;
+}
+
+.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot:hover fieldset {
+  border-color: #00CBE4;
+  caret-color: #00CBE4 !important;
 }
 
 .theme--dark.v-counter,

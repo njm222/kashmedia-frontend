@@ -8,7 +8,7 @@
       player-width="100%"
       player-height="100%"
       :video-id="videoId"
-      :player-vars="{ playlist: videoId, autoplay: 1, controls: 0, loop: 1, modestbranding: 1, rel: 0 }"
+      :player-vars="{ autoplay: 1, controls: 0, loop: 1, modestbranding: 1, rel: 0, playlist: videoId }"
       @ready="ready"
     />
     <div v-show="loading">

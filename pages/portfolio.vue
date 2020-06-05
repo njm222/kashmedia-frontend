@@ -19,6 +19,7 @@
                 :items="videoCategories"
                 class="d-flex align-center"
                 outlined
+                color="primary"
                 transition="scroll-y-transition"
               />
             </v-toolbar-items>
