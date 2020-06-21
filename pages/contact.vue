@@ -42,7 +42,9 @@
           </v-card-title>
           <v-card class="contact-container" outlined raised>
             <v-form
+              ref="form"
               v-model="valid"
+              lazy-validation
             >
               <v-container>
                 <v-spacer />
@@ -105,6 +107,7 @@
                     <v-btn :disabled="!valid" outlined v-bind="size" @click="submit">
                       send
                     </v-btn>
+                    {{ formMessage }}
                   </v-col>
                 </v-row>
                 <v-spacer />
@@ -118,6 +121,7 @@
 </template>
 
 <script>
+import axios from '../.nuxt/axios'
 import ContactQuery from '~/apollo/queries/contact/contactText'
 
 export default {
@@ -125,11 +129,12 @@ export default {
     return {
       contact: [],
       valid: true,
+      formMessage: '',
       firstname: '',
       lastname: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => v.length <= 20 || 'Name must be less than 20 characters'
+        v => (v && v.length <= 20) || 'Name must be less than 20 characters'
       ],
       email: '',
       emailRules: [
@@ -139,12 +144,12 @@ export default {
       subject: '',
       subjectRules: [
         v => !!v || 'Subject is required',
-        v => v.length <= 30 || 'Subject must be less than 30 characters'
+        v => (v && v.length <= 30) || 'Subject must be less than 30 characters'
       ],
       message: '',
       messageRules: [
         v => !!v || 'Message is required',
-        v => v.length <= 750 || 'Message must be less than 750 characters'
+        v => (v && v.length <= 750) || 'Message must be less than 750 characters'
       ]
     }
   },
@@ -176,14 +181,40 @@ export default {
       console.log(this.email)
       console.log(this.subject)
       console.log(this.message)
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: 'vibewitme415@gmail.com',
+          from: 'vibewitme415@gmail.com',
+          replyTo: this.email,
+          subject: this.subject,
+          text: this.message + '\n' + this.firstname + ' ' + this.lastname
+        })
+      }
+      fetch('https://kashmedia.herokuapp.com/email', requestOptions)
+        .then(async (response) => {
+          const data = await response.json()
+
+          console.log(response)
+
+          // check for error response
+          if (!response.ok) {
+            // get error message from body or default to response status
+            const error = (data && data.message) || response.status
+            this.formMessage = 'There was an error sending the message, please try again later.'
+            return Promise.reject(error)
+          } else {
+            this.clear()
+            this.formMessage = 'Your message has been sent!'
+          }
+        })
+        .catch(() => {
+          this.formMessage = 'There was an error sending the message, please try again later.'
+        })
     },
     clear () {
-      this.firstname = ''
-      this.lastname = ''
-      this.email = ''
-      this.subject = ''
-      this.message = ''
-      this.valid = true
+      this.$refs.form.reset()
     }
   }
 }
