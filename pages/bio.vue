@@ -11,9 +11,6 @@
               {{ bioTitle }}
             </v-toolbar-title>
             <v-spacer />
-            <v-toolbar-items>
-              sample bio item
-            </v-toolbar-items>
           </v-layout>
         </v-container>
       </v-toolbar>
