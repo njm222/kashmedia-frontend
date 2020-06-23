@@ -176,11 +176,6 @@ export default {
   },
   methods: {
     submit () {
-      console.log(this.firstname)
-      console.log(this.lastname)
-      console.log(this.email)
-      console.log(this.subject)
-      console.log(this.message)
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
