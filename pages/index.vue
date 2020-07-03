@@ -109,18 +109,26 @@ export default {
     z-index: 1;
   }
   .landing-title {
-    font-size: 3.5vw;
+    font-size: 2.5em;
     line-height: 1em;
     font-family: 'Poiret One', cursive;
     font-weight: 400;
   }
   .landing-subtitle {
-    font-size: 1vw;
+    font-size: 1.5em;
     letter-spacing: 0.2em;
     line-height: 1em;
     margin-top: 0.3rem;
     font-family: 'Poiret One', cursive;
     font-weight: 400;
-    margin-left: 7.5vw;
+    margin-left: 2em;
+  }
+  @media only screen and (max-width: 425px) {
+    .landing-title {
+      font-size: 1.3em;
+    }
+    .landing-subtitle {
+      font-size: 0.75em;
+    }
   }
 </style>
