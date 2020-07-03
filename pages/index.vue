@@ -109,17 +109,18 @@ export default {
     z-index: 1;
   }
   .landing-title {
-    font-size: 7.5vw;
+    font-size: 3.5vw;
     line-height: 1em;
     font-family: 'Poiret One', cursive;
     font-weight: 400;
   }
   .landing-subtitle {
-    font-size: 3vw;
+    font-size: 1vw;
     letter-spacing: 0.2em;
     line-height: 1em;
     margin-top: 0.3rem;
     font-family: 'Poiret One', cursive;
     font-weight: 400;
+    margin-left: 7.5vw;
   }
 </style>
